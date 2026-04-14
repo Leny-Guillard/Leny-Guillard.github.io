@@ -294,6 +294,70 @@
     </footer>
 
     <script>
+        // ── Mobile menu ──
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('main-nav');
+        hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        nav.classList.toggle('open');
+        });
+        nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => { hamburger.classList.remove('open'); nav.classList.remove('open'); });
+        });
+        
+        // ── Scroll reveal ──
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        reveals.forEach(el => observer.observe(el));
+        
+        // ── Skill bars ──
+        const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+            e.target.querySelectorAll('.skill-fill').forEach((fill, i) => {
+                setTimeout(() => { fill.style.width = fill.dataset.width + '%'; }, i * 120);
+            });
+            skillObserver.unobserve(e.target);
+            }
+        });
+        }, { threshold: 0.3 });
+        const skillBars = document.getElementById('skill-bars');
+        if (skillBars) skillObserver.observe(skillBars);
+        
+        // ── Header shadow on scroll ──
+        window.addEventListener('scroll', () => {
+        document.getElementById('site-header').style.boxShadow =
+            window.scrollY > 20 ? '0 4px 40px rgba(0,0,0,0.5)' : 'none';
+        });
+        
+        // ── Contact form ──
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        const message = this.message.value.trim();
+        if (!name || !email || !message) {
+            [this.name, this.email, this.message].forEach(f => {
+            if (!f.value.trim()) f.style.borderColor = '#c0392b';
+            });
+            return;
+        }
+        const btn = this.querySelector('button[type="submit"]');
+        btn.textContent = 'Envoi…';
+        btn.disabled = true;
+        setTimeout(() => {
+            this.reset();
+            btn.textContent = 'Envoyer le message';
+            btn.disabled = false;
+            document.getElementById('form-success').style.display = 'block';
+            setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
+        }, 1200);
+        });
+    </script>
+
+    <script>
         // ========== DATA LAYER ==========
         const navigationItems = [
             { "label": "Accueil", "href": "#accueil" },
