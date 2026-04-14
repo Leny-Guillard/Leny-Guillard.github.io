@@ -151,127 +151,44 @@
         </section>
 
         <!-- Section Compétences -->
-        <section id="compétences">
-        <div class="section-header reveal">
-            <span class="section-num">02 — Compétences</span>
-            <h2>Expertise &<br><em>savoir-faire</em></h2>
-            <div class="section-divider"></div>
-        </div>
-        
-        <div class="skills-layout">
-            <div class="reveal">
-            <p class="skills-intro">Une maîtrise technique couplée à une sensibilité design, pour créer des produits digitaux qui résistent à l'épreuve du temps.</p>
-            <div class="skill-bars" id="skill-bars">
-                <div class="skill-item">
-                <div class="skill-meta"><span class="skill-name">Design UI/UX</span><span class="skill-pct">95%</span></div>
-                <div class="skill-track"><div class="skill-fill" data-width="95"><div class="skill-dot"></div></div></div>
-                </div>
-                <div class="skill-item">
-                <div class="skill-meta"><span class="skill-name">React / Next.js</span><span class="skill-pct">90%</span></div>
-                <div class="skill-track"><div class="skill-fill" data-width="90"><div class="skill-dot"></div></div></div>
-                </div>
-                <div class="skill-item">
-                <div class="skill-meta"><span class="skill-name">Node.js / API</span><span class="skill-pct">82%</span></div>
-                <div class="skill-track"><div class="skill-fill" data-width="82"><div class="skill-dot"></div></div></div>
-                </div>
-                <div class="skill-item">
-                <div class="skill-meta"><span class="skill-name">CSS / Animation</span><span class="skill-pct">93%</span></div>
-                <div class="skill-track"><div class="skill-fill" data-width="93"><div class="skill-dot"></div></div></div>
-                </div>
-                <div class="skill-item">
-                <div class="skill-meta"><span class="skill-name">Branding</span><span class="skill-pct">78%</span></div>
-                <div class="skill-track"><div class="skill-fill" data-width="78"><div class="skill-dot"></div></div></div>
-                </div>
+        <section id="competences" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-center mb-12">Mes <span class="text-accent">Compétences</span></h2>
+                <div id="skills-container" class="max-w-3xl mx-auto"></div>
             </div>
-            </div>
-        
-            <div class="reveal reveal-delay-1">
-            <div class="tags-grid">
-                <div class="tag-chip">Figma</div>
-                <div class="tag-chip">TypeScript</div>
-                <div class="tag-chip">Python</div>
-                <div class="tag-chip">PostgreSQL</div>
-                <div class="tag-chip">MongoDB</div>
-                <div class="tag-chip">Docker</div>
-                <div class="tag-chip">Git</div>
-                <div class="tag-chip">Framer</div>
-                <div class="tag-chip">Webflow</div>
-                <div class="tag-chip">Three.js</div>
-                <div class="tag-chip">AWS</div>
-                <div class="tag-chip">Vercel</div>
-                <div class="tag-chip">Illustrator</div>
-                <div class="tag-chip">Photoshop</div>
-                <div class="tag-chip">Agile</div>
-            </div>
-            </div>
-        </div>
         </section>
-        
+
         <!-- Section Contact -->
-        <section id="contact">
-        <div class="section-header reveal">
-            <span class="section-num">03 — Contact</span>
-            <h2>Travaillons<br><em>ensemble</em></h2>
-            <div class="section-divider"></div>
-        </div>
-        
-        <div class="contact-layout">
-            <div class="reveal">
-            <p class="contact-tagline">"Un bon design commence par une bonne conversation."</p>
-            <div class="contact-links">
-                <a href="mailto:alex@morel.design" class="contact-link">
-                <div class="contact-link-icon">✉</div>
-                alex@morel.design
-                </a>
-                <a href="tel:+33612345678" class="contact-link">
-                <div class="contact-link-icon">☎</div>
-                +33 6 12 34 56 78
-                </a>
-                <a href="#" class="contact-link">
-                <div class="contact-link-icon">in</div>
-                linkedin.com/in/alexandre-morel
-                </a>
-                <a href="#" class="contact-link">
-                <div class="contact-link-icon">⌂</div>
-                Lyon, France
-                </a>
+        <section id="contact" class="bg-secondary py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-center mb-12">Me <span class="text-accent">Contacter</span></h2>
+                <div class="max-w-2xl mx-auto">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Nom complet</label>
+                                <input type="text" id="name" name="name" required class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-3 form-input focus:border-accent transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Adresse email</label>
+                                <input type="email" id="email" name="email" required class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-3 form-input focus:border-accent transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Sujet</label>
+                            <input type="text" id="subject" name="subject" required class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-3 form-input focus:border-accent transition-colors">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-3 form-input focus:border-accent transition-colors"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-accent text-primary font-semibold px-8 py-3 rounded-lg hover:bg-accent-hover transition-colors duration-300">
+                            Envoyer le message
+                        </button>
+                    </form>
+                    <div id="form-message" class="mt-6 text-center hidden"></div>
+                </div>
             </div>
-            </div>
-        
-            <div class="reveal reveal-delay-1">
-            <form class="contact-form" id="contact-form" novalidate>
-                <div class="form-row">
-                <div class="form-field">
-                    <label for="name">Nom complet</label>
-                    <input type="text" id="name" name="name" placeholder="Jean Dupont" required>
-                </div>
-                <div class="form-field">
-                    <label for="email">Adresse e-mail</label>
-                    <input type="email" id="email" name="email" placeholder="jean@example.com" required>
-                </div>
-                </div>
-                <div class="form-field">
-                <label for="subject">Sujet</label>
-                <select id="subject" name="subject">
-                    <option value="">Choisir un sujet…</option>
-                    <option value="project">Projet web</option>
-                    <option value="design">Design & Branding</option>
-                    <option value="collab">Collaboration</option>
-                    <option value="other">Autre</option>
-                </select>
-                </div>
-                <div class="form-field">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Décrivez votre projet ou votre demande…" required></textarea>
-                </div>
-                <div class="form-submit">
-                <span class="form-note">Réponse sous 24 h</span>
-                <button type="submit" class="btn btn-primary">Envoyer le message</button>
-                </div>
-                <div id="form-success">✓ &nbsp; Votre message a bien été envoyé. Je vous répondrai très rapidement.</div>
-            </form>
-            </div>
-        </div>
         </section>
     </main>
 
@@ -292,52 +209,6 @@
             </div>
         </div>
     </footer>
-
-    <script>        
-        // ── Skill bars ──
-        const skillObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-            e.target.querySelectorAll('.skill-fill').forEach((fill, i) => {
-                setTimeout(() => { fill.style.width = fill.dataset.width + '%'; }, i * 120);
-            });
-            skillObserver.unobserve(e.target);
-            }
-        });
-        }, { threshold: 0.3 });
-        const skillBars = document.getElementById('skill-bars');
-        if (skillBars) skillObserver.observe(skillBars);
-        
-        // ── Header shadow on scroll ──
-        window.addEventListener('scroll', () => {
-        document.getElementById('site-header').style.boxShadow =
-            window.scrollY > 20 ? '0 4px 40px rgba(0,0,0,0.5)' : 'none';
-        });
-        
-        // ── Contact form ──
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = this.name.value.trim();
-        const email = this.email.value.trim();
-        const message = this.message.value.trim();
-        if (!name || !email || !message) {
-            [this.name, this.email, this.message].forEach(f => {
-            if (!f.value.trim()) f.style.borderColor = '#c0392b';
-            });
-            return;
-        }
-        const btn = this.querySelector('button[type="submit"]');
-        btn.textContent = 'Envoi…';
-        btn.disabled = true;
-        setTimeout(() => {
-            this.reset();
-            btn.textContent = 'Envoyer le message';
-            btn.disabled = false;
-            document.getElementById('form-success').style.display = 'block';
-            setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
-        }, 1200);
-        });
-    </script>
 
     <script>
         // ========== DATA LAYER ==========
@@ -393,14 +264,14 @@
             }
         ];
 
-        // const skills = [
-        //     { "name": "HTML/CSS", "level": "95%" },
-        //     { "name": "JavaScript", "level": "90%" },
-        //     { "name": "React", "level": "85%" },
-        //     { "name": "Vue.js", "level": "80%" },
-        //     { "name": "Node.js", "level": "75%" },
-        //     { "name": "UI/UX Design", "level": "70%" }
-        // ];
+        const skills = [
+            { "name": "HTML/CSS", "level": "95%" },
+            { "name": "JavaScript", "level": "90%" },
+            { "name": "React", "level": "85%" },
+            { "name": "Vue.js", "level": "80%" },
+            { "name": "Node.js", "level": "75%" },
+            { "name": "UI/UX Design", "level": "70%" }
+        ];
 
         const socialLinks = [
             { "platform": "GitHub", "icon": "fab fa-github", "href": "https://github.com", "color": "hover:text-gray-300" },
@@ -437,19 +308,19 @@
             ).join("");
         }
 
-        // function renderSkills(items) {
-        //     return items.map((skill, index) => 
-        //         `<div class="mb-8 animate-slide-up" style="animation-delay: ${index * 0.1}s">
-        //             <div class="flex justify-between mb-2">
-        //                 <span class="font-medium">${skill.name}</span>
-        //                 <span class="text-accent">${skill.level}</span>
-        //             </div>
-        //             <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-        //                 <div class="skill-bar h-full" style="--skill-level: ${skill.level}" data-level="${skill.level}"></div>
-        //             </div>
-        //         </div>`
-        //     ).join("");
-        // }
+        function renderSkills(items) {
+            return items.map((skill, index) => 
+                `<div class="mb-8 animate-slide-up" style="animation-delay: ${index * 0.1}s">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">${skill.name}</span>
+                        <span class="text-accent">${skill.level}</span>
+                    </div>
+                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full" style="--skill-level: ${skill.level}" data-level="${skill.level}"></div>
+                    </div>
+                </div>`
+            ).join("");
+        }
 
         function renderSocialLinks(items) {
             return items.map(item => 
