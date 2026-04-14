@@ -293,25 +293,7 @@
         </div>
     </footer>
 
-    <script>
-        // ── Mobile menu ──
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.getElementById('main-nav');
-        hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        nav.classList.toggle('open');
-        });
-        nav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => { hamburger.classList.remove('open'); nav.classList.remove('open'); });
-        });
-        
-        // ── Scroll reveal ──
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-        }, { threshold: 0.12 });
-        reveals.forEach(el => observer.observe(el));
-        
+    <script>        
         // ── Skill bars ──
         const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(e => {
@@ -411,14 +393,14 @@
             }
         ];
 
-        const skills = [
-            { "name": "HTML/CSS", "level": "95%" },
-            { "name": "JavaScript", "level": "90%" },
-            { "name": "React", "level": "85%" },
-            { "name": "Vue.js", "level": "80%" },
-            { "name": "Node.js", "level": "75%" },
-            { "name": "UI/UX Design", "level": "70%" }
-        ];
+        // const skills = [
+        //     { "name": "HTML/CSS", "level": "95%" },
+        //     { "name": "JavaScript", "level": "90%" },
+        //     { "name": "React", "level": "85%" },
+        //     { "name": "Vue.js", "level": "80%" },
+        //     { "name": "Node.js", "level": "75%" },
+        //     { "name": "UI/UX Design", "level": "70%" }
+        // ];
 
         const socialLinks = [
             { "platform": "GitHub", "icon": "fab fa-github", "href": "https://github.com", "color": "hover:text-gray-300" },
@@ -455,19 +437,19 @@
             ).join("");
         }
 
-        function renderSkills(items) {
-            return items.map((skill, index) => 
-                `<div class="mb-8 animate-slide-up" style="animation-delay: ${index * 0.1}s">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-medium">${skill.name}</span>
-                        <span class="text-accent">${skill.level}</span>
-                    </div>
-                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                        <div class="skill-bar h-full" style="--skill-level: ${skill.level}" data-level="${skill.level}"></div>
-                    </div>
-                </div>`
-            ).join("");
-        }
+        // function renderSkills(items) {
+        //     return items.map((skill, index) => 
+        //         `<div class="mb-8 animate-slide-up" style="animation-delay: ${index * 0.1}s">
+        //             <div class="flex justify-between mb-2">
+        //                 <span class="font-medium">${skill.name}</span>
+        //                 <span class="text-accent">${skill.level}</span>
+        //             </div>
+        //             <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+        //                 <div class="skill-bar h-full" style="--skill-level: ${skill.level}" data-level="${skill.level}"></div>
+        //             </div>
+        //         </div>`
+        //     ).join("");
+        // }
 
         function renderSocialLinks(items) {
             return items.map(item => 
