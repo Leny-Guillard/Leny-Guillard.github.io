@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
     <base target="_self">
@@ -72,23 +72,6 @@
                         <a href="#contact" class="border-2 border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300">
                             Me contacter
                         </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative">
-                        <div class="w-80 h-80 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-2xl">
-                            <div class="w-72 h-72 bg-white rounded-full flex items-center justify-center">
-                                <img 
-                                    src="https://picsum.photos/280?random=1" 
-                                    alt="Photo de Leny Guillard" 
-                                    class="w-64 h-64 rounded-full object-cover border-4 border-white shadow-lg"
-                                    loading="lazy"
-                                />
-                            </div>
-                        </div>
-                        <div class="absolute -bottom-4 -right-4 bg-accent text-white px-4 py-2 rounded-full shadow-lg">
-                            <span class="font-semibold">Disponible</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -389,6 +372,536 @@
             nav.classList.toggle('bg-white');
             nav.classList.toggle('p-4');
             nav.classList.toggle('space-y-4');
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Développeur Créatif</title>
+    <meta name="description" content="Portfolio professionnel avec design moderne et palette sombre.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <link href="icon.png" rel="icon"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0a0a0a",
+                        secondary: "#1a1a1a",
+                        accent: "#d4af37",
+                        "accent-hover": "#e6c158",
+                        "text-light": "#f5f5f5",
+                        "text-muted": "#a3a3a3"
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'opensans': ['Open Sans', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #d4af37;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .skill-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #d4af37, #e6c158);
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        .skill-bar.animated {
+            width: var(--skill-level);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-primary text-text-light">
+    <!-- Header Fixe -->
+    <header class="fixed top-0 left-0 right-0 bg-primary/95 backdrop-blur-sm z-50 border-b border-secondary">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+                    <span class="font-playfair font-bold text-primary text-xl">P</span>
+                </div>
+                <span class="font-playfair text-xl font-semibold">Portfolio</span>
+            </div>
+            
+            <ul id="nav-menu" class="hidden md:flex space-x-8"></ul>
+            
+            <button id="mobile-menu-btn" class="md:hidden text-text-light">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="md:hidden bg-secondary absolute top-full left-0 right-0 shadow-lg hidden">
+            <ul id="mobile-nav-list" class="py-4"></ul>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Section Hero -->
+        <section id="accueil" class="container mx-auto px-4 py-16 md:py-24">
+            <div class="max-w-4xl mx-auto text-center animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-playfair font-bold mb-6">
+                    Créateur d'<span class="text-accent">Expériences</span> Digitales
+                </h1>
+                <p class="text-xl text-text-muted mb-10 max-w-2xl mx-auto">
+                    Je conçois et développe des interfaces web modernes, élégantes et performantes qui captivent et engagent.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#projets" class="bg-accent text-primary font-semibold px-8 py-3 rounded-lg hover:bg-accent-hover transition-colors duration-300">
+                        Voir mes projets
+                    </a>
+                    <a href="#contact" class="border border-accent text-accent font-semibold px-8 py-3 rounded-lg hover:bg-accent hover:text-primary transition-colors duration-300">
+                        Me contacter
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Projets -->
+        <section id="projets" class="bg-secondary py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-center mb-12">Mes <span class="text-accent">Projets</span></h2>
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+
+        <!-- Section Compétences -->
+        <section id="compétences">
+        <div class="section-header reveal">
+            <span class="section-num">02 — Compétences</span>
+            <h2>Expertise &<br><em>savoir-faire</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        
+        <div class="skills-layout">
+            <div class="reveal">
+            <p class="skills-intro">Une maîtrise technique couplée à une sensibilité design, pour créer des produits digitaux qui résistent à l'épreuve du temps.</p>
+            <div class="skill-bars" id="skill-bars">
+                <div class="skill-item">
+                <div class="skill-meta"><span class="skill-name">Design UI/UX</span><span class="skill-pct">95%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-width="95"><div class="skill-dot"></div></div></div>
+                </div>
+                <div class="skill-item">
+                <div class="skill-meta"><span class="skill-name">React / Next.js</span><span class="skill-pct">90%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-width="90"><div class="skill-dot"></div></div></div>
+                </div>
+                <div class="skill-item">
+                <div class="skill-meta"><span class="skill-name">Node.js / API</span><span class="skill-pct">82%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-width="82"><div class="skill-dot"></div></div></div>
+                </div>
+                <div class="skill-item">
+                <div class="skill-meta"><span class="skill-name">CSS / Animation</span><span class="skill-pct">93%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-width="93"><div class="skill-dot"></div></div></div>
+                </div>
+                <div class="skill-item">
+                <div class="skill-meta"><span class="skill-name">Branding</span><span class="skill-pct">78%</span></div>
+                <div class="skill-track"><div class="skill-fill" data-width="78"><div class="skill-dot"></div></div></div>
+                </div>
+            </div>
+            </div>
+        
+            <div class="reveal reveal-delay-1">
+            <div class="tags-grid">
+                <div class="tag-chip">Figma</div>
+                <div class="tag-chip">TypeScript</div>
+                <div class="tag-chip">Python</div>
+                <div class="tag-chip">PostgreSQL</div>
+                <div class="tag-chip">MongoDB</div>
+                <div class="tag-chip">Docker</div>
+                <div class="tag-chip">Git</div>
+                <div class="tag-chip">Framer</div>
+                <div class="tag-chip">Webflow</div>
+                <div class="tag-chip">Three.js</div>
+                <div class="tag-chip">AWS</div>
+                <div class="tag-chip">Vercel</div>
+                <div class="tag-chip">Illustrator</div>
+                <div class="tag-chip">Photoshop</div>
+                <div class="tag-chip">Agile</div>
+            </div>
+            </div>
+        </div>
+        </section>
+        
+        <!-- Section Contact -->
+        <section id="contact">
+        <div class="section-header reveal">
+            <span class="section-num">03 — Contact</span>
+            <h2>Travaillons<br><em>ensemble</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        
+        <div class="contact-layout">
+            <div class="reveal">
+            <p class="contact-tagline">"Un bon design commence par une bonne conversation."</p>
+            <div class="contact-links">
+                <a href="mailto:alex@morel.design" class="contact-link">
+                <div class="contact-link-icon">✉</div>
+                alex@morel.design
+                </a>
+                <a href="tel:+33612345678" class="contact-link">
+                <div class="contact-link-icon">☎</div>
+                +33 6 12 34 56 78
+                </a>
+                <a href="#" class="contact-link">
+                <div class="contact-link-icon">in</div>
+                linkedin.com/in/alexandre-morel
+                </a>
+                <a href="#" class="contact-link">
+                <div class="contact-link-icon">⌂</div>
+                Lyon, France
+                </a>
+            </div>
+            </div>
+        
+            <div class="reveal reveal-delay-1">
+            <form class="contact-form" id="contact-form" novalidate>
+                <div class="form-row">
+                <div class="form-field">
+                    <label for="name">Nom complet</label>
+                    <input type="text" id="name" name="name" placeholder="Jean Dupont" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" placeholder="jean@example.com" required>
+                </div>
+                </div>
+                <div class="form-field">
+                <label for="subject">Sujet</label>
+                <select id="subject" name="subject">
+                    <option value="">Choisir un sujet…</option>
+                    <option value="project">Projet web</option>
+                    <option value="design">Design & Branding</option>
+                    <option value="collab">Collaboration</option>
+                    <option value="other">Autre</option>
+                </select>
+                </div>
+                <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Décrivez votre projet ou votre demande…" required></textarea>
+                </div>
+                <div class="form-submit">
+                <span class="form-note">Réponse sous 24 h</span>
+                <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </div>
+                <div id="form-success">✓ &nbsp; Votre message a bien été envoyé. Je vous répondrai très rapidement.</div>
+            </form>
+            </div>
+        </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary border-t border-secondary py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+                            <span class="font-playfair font-bold text-primary">P</span>
+                        </div>
+                        <span class="font-playfair text-lg">Portfolio</span>
+                    </div>
+                    <p class="text-text-muted text-sm mt-2">© 2024 Tous droits réservés.</p>
+                </div>
+                <ul id="social-links" class="flex space-x-6"></ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== DATA LAYER ==========
+        const navigationItems = [
+            { "label": "Accueil", "href": "#accueil" },
+            { "label": "Projets", "href": "#projets" },
+            { "label": "Compétences", "href": "#competences" },
+            { "label": "Contact", "href": "#contact" }
+        ];
+
+        const projects = [
+            { 
+                "title": "Plateforme E-commerce", 
+                "description": "Site e-commerce avec panier dynamique et paiement sécurisé.",
+                "image": "https://picsum.photos/600/400?random=1",
+                "alt": "Interface plateforme e-commerce moderne",
+                "tags": ["React", "Node.js", "MongoDB"]
+            },
+            { 
+                "title": "Application de Gestion", 
+                "description": "Dashboard analytique pour la gestion d'entreprise avec rapports en temps réel.",
+                "image": "https://picsum.photos/600/400?random=2",
+                "alt": "Dashboard analytique moderne",
+                "tags": ["Vue.js", "Express", "PostgreSQL"]
+            },
+            { 
+                "title": "Site Portfolio Artistique", 
+                "description": "Portfolio interactif pour artiste avec galerie et animations CSS.",
+                "image": "https://picsum.photos/600/400?random=3",
+                "alt": "Portfolio artistique avec galerie",
+                "tags": ["HTML/CSS", "JavaScript", "GSAP"]
+            },
+            { 
+                "title": "Application Mobile", 
+                "description": "Application de suivi de fitness avec synchronisation cloud.",
+                "image": "https://picsum.photos/600/400?random=4",
+                "alt": "Application mobile fitness",
+                "tags": ["React Native", "Firebase", "Redux"]
+            },
+            { 
+                "title": "Site Corporate", 
+                "description": "Site vitrine pour entreprise avec blog intégré et formulaire de contact.",
+                "image": "https://picsum.photos/600/400?random=5",
+                "alt": "Site corporate professionnel",
+                "tags": ["WordPress", "PHP", "MySQL"]
+            },
+            { 
+                "title": "Jeu Web Interactif", 
+                "description": "Jeu éducatif en ligne avec système de scores et classements.",
+                "image": "https://picsum.photos/600/400?random=6",
+                "alt": "Jeu web interactif éducatif",
+                "tags": ["Canvas API", "WebSocket", "Node.js"]
+            }
+        ];
+
+        const skills = [
+            { "name": "HTML/CSS", "level": "95%" },
+            { "name": "JavaScript", "level": "90%" },
+            { "name": "React", "level": "85%" },
+            { "name": "Vue.js", "level": "80%" },
+            { "name": "Node.js", "level": "75%" },
+            { "name": "UI/UX Design", "level": "70%" }
+        ];
+
+        const socialLinks = [
+            { "platform": "GitHub", "icon": "fab fa-github", "href": "https://github.com", "color": "hover:text-gray-300" },
+            { "platform": "LinkedIn", "icon": "fab fa-linkedin", "href": "https://linkedin.com", "color": "hover:text-blue-400" },
+            { "platform": "Twitter", "icon": "fab fa-twitter", "href": "https://twitter.com", "color": "hover:text-blue-300" },
+            { "platform": "Dribbble", "icon": "fab fa-dribbble", "href": "https://dribbble.com", "color": "hover:text-pink-400" }
+        ];
+
+        // ========== RENDER FUNCTIONS ==========
+        function renderNavItems(items) {
+            return items.map(item => 
+                `<li>
+                    <a href="${item.href}" class="nav-link text-text-light hover:text-accent transition-colors duration-300">
+                        ${item.label}
+                    </a>
+                </li>`
+            ).join("");
+        }
+
+        function renderProjects(items) {
+            return items.map((project, index) => 
+                `<article class="bg-primary rounded-xl overflow-hidden border border-gray-800 card-hover animate-slide-up" style="animation-delay: ${index * 0.1}s">
+                    <img src="${project.image}" alt="${project.alt}" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-playfair font-semibold mb-2">${project.title}</h3>
+                        <p class="text-text-muted mb-4">${project.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.tags.map(tag => 
+                                `<span class="px-3 py-1 bg-secondary text-text-light text-sm rounded-full">${tag}</span>`
+                            ).join("")}
+                        </div>
+                    </div>
+                </article>`
+            ).join("");
+        }
+
+        function renderSkills(items) {
+            return items.map((skill, index) => 
+                `<div class="mb-8 animate-slide-up" style="animation-delay: ${index * 0.1}s">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">${skill.name}</span>
+                        <span class="text-accent">${skill.level}</span>
+                    </div>
+                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                        <div class="skill-bar h-full" style="--skill-level: ${skill.level}" data-level="${skill.level}"></div>
+                    </div>
+                </div>`
+            ).join("");
+        }
+
+        function renderSocialLinks(items) {
+            return items.map(item => 
+                `<li>
+                    <a href="${item.href}" target="_blank" rel="noopener noreferrer" 
+                       class="${item.color} text-text-muted transition-colors duration-300 text-xl">
+                        <i class="${item.icon}"></i>
+                        <span class="sr-only">${item.platform}</span>
+                    </a>
+                </li>`
+            ).join("");
+        }
+
+        // ========== INITIALIZATION ==========
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inject navigation
+            document.getElementById("nav-menu").innerHTML = renderNavItems(navigationItems);
+            document.getElementById("mobile-nav-list").innerHTML = renderNavItems(navigationItems);
+            
+            // Inject projects
+            document.getElementById("projects-grid").innerHTML = renderProjects(projects);
+            
+            // Inject skills
+            document.getElementById("skills-container").innerHTML = renderSkills(skills);
+            
+            // Inject social links
+            document.getElementById("social-links").innerHTML = renderSocialLinks(socialLinks);
+            
+            // Animate skill bars on scroll
+            const observerOptions = {
+                threshold: 0.5
+            };
+            
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll(".skill-bar");
+                        skillBars.forEach(bar => {
+                            bar.classList.add("animated");
+                        });
+                        skillObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            const skillsSection = document.getElementById("competences");
+            if (skillsSection) {
+                skillObserver.observe(skillsSection);
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            
+            mobileMenuBtn.addEventListener("click", function() {
+                mobileMenu.classList.toggle("hidden");
+            });
+            
+            // Close mobile menu when clicking a link
+            document.addEventListener("click", function(event) {
+                if (event.target.closest("a[href^='#']") && !mobileMenu.classList.contains("hidden")) {
+                    mobileMenu.classList.add("hidden");
+                }
+            });
+            
+            // Smooth scroll for navigation links
+            document.addEventListener("click", function(event) {
+                const link = event.target.closest("a[href^='#']");
+                if (!link) return;
+                
+                const targetId = link.getAttribute("href");
+                if (targetId === "#") return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    event.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: "smooth"
+                    });
+                }
+            });
+            
+            // Contact form handling
+            const contactForm = document.getElementById("contact-form");
+            const formMessage = document.getElementById("form-message");
+            
+            contactForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Simulate form submission
+                formMessage.textContent = "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.";
+                formMessage.className = "mt-6 text-center text-green-400";
+                formMessage.classList.remove("hidden");
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add("hidden");
+                }, 5000);
+                
+                // In a real application, you would send data to a server here
+                console.log("Form data:", data);
+            });
+            
+            // Add Font Awesome
+            const faScript = document.createElement("script");
+            faScript.src = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js";
+            document.head.appendChild(faScript);
         });
     </script>
 </body>
