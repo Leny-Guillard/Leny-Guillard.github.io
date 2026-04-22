@@ -226,7 +226,8 @@
                 "image": "https://picsum.photos/600/400?random=1",
                 "alt": "Interface plateforme e-commerce moderne",
                 "tags": ["React", "Node.js", "MongoDB"],
-                "button" : "Voir le projet"
+                "button" : "Voir le projet",
+                "link": "https://leny-guillard.github.io/TP_emoji/"
             },
             { 
                 "title": "Sites IA génératives", 
@@ -234,7 +235,8 @@
                 "image": "https://picsum.photos/600/400?random=2",
                 "alt": "Dashboard analytique moderne",
                 "tags": ["Vue.js", "Express", "PostgreSQL"],
-                "button" : "Voir le projet"
+                "button" : "Voir le projet",
+                "link": "https://github.com/orgs/SItes-IA-generative/repositories"
             },
             { 
                 "title": "Laravel", 
@@ -242,7 +244,8 @@
                 "image": "https://picsum.photos/600/400?random=3",
                 "alt": "Portfolio artistique avec galerie",
                 "tags": ["HTML/CSS", "JavaScript", "GSAP"],
-                "button" : "Voir le projet"
+                "button" : "Voir le projet",
+                "link": "https://github.com/Leny-Guillard/Laravel"
             },
             { 
                 "title": "Eiko", 
@@ -250,7 +253,8 @@
                 "image": "https://picsum.photos/600/400?random=4",
                 "alt": "Application mobile fitness",
                 "tags": ["React Native", "Firebase", "Redux"],
-                "button" : "Voir le projet"
+                "button" : "Voir le projet",
+                "link": "https://github.com/Leny-Guillard/eiko"
             },
             { 
                 "title": "Site Corporate", 
@@ -258,7 +262,8 @@
                 "image": "https://picsum.photos/600/400?random=5",
                 "alt": "Site corporate professionnel",
                 "tags": ["WordPress", "PHP", "MySQL"],
-                "button" : "Voir le projet"
+                "button" : "Voir le projet",
+                "link": "https://github.com/Leny-Guillard/site-corporate"
             },
             { 
                 "title": "Jeu Web Interactif", 
@@ -266,7 +271,8 @@
                 "image": "https://picsum.photos/600/400?random=6",
                 "alt": "Jeu web interactif éducatif",
                 "tags": ["Canvas API", "WebSocket", "Node.js"],
-                "button" : "Voir le projet"
+                "button" : "Voir le projet",
+                "link": "https://github.com/Leny-Guillard/jeu-web-interactif"
             }
         ];
 
@@ -304,11 +310,12 @@
                     <div class="p-6">
                         <h3 class="text-xl font-playfair font-semibold mb-2">${project.title}</h3>
                         <p class="text-text-muted mb-4">${project.description}</p>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-2 mb-4">
                             ${project.tags.map(tag => 
                                 `<span class="px-3 py-1 bg-secondary text-text-light text-sm rounded-full">${tag}</span>`
                             ).join("")}
                         </div>
+                        <a href="${project.link}" target="_blank" class="bg-accent text-primary font-semibold px-4 py-2 rounded-lg hover:bg-accent-hover transition-colors duration-300">${project.button}</a>
                     </div>
                 </article>`
             ).join("");
